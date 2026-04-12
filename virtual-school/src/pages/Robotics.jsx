@@ -1,180 +1,210 @@
-import { motion } from 'framer-motion'
-import { Cpu, Trophy, Zap, Users, Globe, Award } from 'lucide-react'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Cpu, Trophy, FlaskConical, Code, Lightbulb, Users } from 'lucide-react';
 
 const Robotics = () => {
   const labs = [
-    { name: 'AI & Machine Learning Lab', icon: <Cpu className="w-8 h-8" />, desc: 'Explore neural networks and AI algorithms' },
-    { name: 'Robotics Assembly Lab', icon: <Zap className="w-8 h-8" />, desc: 'Build and program autonomous robots' },
-    { name: 'VR/AR Innovation Lab', icon: <Globe className="w-8 h-8" />, desc: 'Create immersive virtual experiences' },
-    { name: 'Competition Arena', icon: <Trophy className="w-8 h-8" />, desc: 'Practice for international competitions' }
-  ]
+    { icon: Cpu, title: 'Robotics Lab', desc: 'Advanced robotics kits and programming stations' },
+    { icon: FlaskConical, title: 'AI & ML Lab', desc: 'Machine learning development environment' },
+    { icon: Code, title: 'Coding Hub', desc: 'Software development and app creation' },
+    { icon: Lightbulb, title: 'Innovation Center', desc: 'Prototyping and project development' },
+  ];
 
   const achievements = [
-    { title: 'First Place - International Robotics Olympiad 2024', level: 'Global' },
-    { title: 'Best Innovation Award - Tech Summit 2023', level: 'National' },
-    { title: 'Gold Medal - AI Challenge 2023', level: 'Global' },
-    { title: 'Champions - Regional Robotics League', level: 'Regional' }
-  ]
+    { year: '2024', title: 'National Robotics Championship', position: '1st Place', desc: 'Gold medal in autonomous robot category' },
+    { year: '2023', title: 'International Science Fair', position: 'Silver Medal', desc: 'Recognition for AI-powered waste sorting system' },
+    { year: '2023', title: 'Pakistan Tech Olympiad', position: 'Top 5', desc: 'Among top 5 teams nationwide' },
+    { year: '2022', title: 'Regional Innovation Challenge', position: 'Winner', desc: 'Best IoT solution award' },
+  ];
 
   const courses = [
-    'Introduction to Robotics',
-    'Advanced Programming with Python',
-    'Machine Learning Fundamentals',
-    'Computer Vision Applications',
-    'Autonomous Systems Design',
-    'IoT and Smart Devices',
-    '3D Modeling & Printing',
-    'Competition Preparation'
-  ]
+    { name: 'Introduction to Robotics', level: 'Beginner', duration: '6 months' },
+    { name: 'Arduino Programming', level: 'Intermediate', duration: '4 months' },
+    { name: 'Python for AI', level: 'Advanced', duration: '8 months' },
+    { name: '3D Design & Printing', level: 'All Levels', duration: '3 months' },
+  ];
 
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="section-padding">
-        <div className="container-custom mx-auto">
+      {/* Hero */}
+      <section className="relative py-20 px-4 bg-gradient-to-b from-dark-950 to-dark-900 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-900/20 via-transparent to-transparent" />
+        <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="inline-block px-4 py-2 bg-primary-500/20 border border-primary-500/30 rounded-full text-primary-400 text-sm font-medium mb-6">
+              Innovation & Technology
+            </span>
+            <h1 className="text-5xl md:text-6xl font-bold font-heading text-white mb-6">
+              Robotics & <span className="text-gradient-gold">STEM</span> Excellence
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Cutting-edge facilities and programs to nurture future innovators, 
+              engineers, and technology leaders.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Labs */}
+      <section className="py-20 px-4 bg-dark-900">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Robotics & <span className="gradient-text">Innovation</span>
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              State-of-the-art facilities and expert guidance to nurture the 
-              next generation of engineers, programmers, and innovators.
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-4">
+              State-of-the-Art <span className="text-gradient-gold">Labs</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              World-class facilities for hands-on learning and experimentation
             </p>
           </motion.div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
-            {[
-              { value: '10+', label: 'Advanced Labs', icon: <Users /> },
-              { value: '500+', label: 'Robots Built', icon: <Cpu /> },
-              { value: '50+', label: 'Awards Won', icon: <Trophy /> },
-              { value: '100%', label: 'Hands-on Learning', icon: <Zap /> }
-            ].map((stat, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {labs.map((lab, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-morphism p-6 rounded-2xl text-center"
+                viewport={{ once: true }}
+                className="glass p-8 rounded-2xl card-hover border border-primary-500/20 text-center"
               >
-                <div className="text-accent mb-3 flex justify-center">{stat.icon}</div>
-                <div className="text-3xl font-bold mb-2">{stat.value}</div>
-                <div className="text-gray-400">{stat.label}</div>
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <lab.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold font-heading text-white mb-3">{lab.title}</h3>
+                <p className="text-gray-400">{lab.desc}</p>
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Labs Grid */}
+      {/* Achievements */}
+      <section className="py-20 px-4 bg-gradient-to-b from-dark-900 to-dark-950">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-20"
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-center mb-12">Our Laboratories</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {labs.map((lab, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="glass-morphism p-6 rounded-2xl hover:bg-white/10 transition-all cursor-pointer group"
-                >
-                  <div className="text-accent mb-4 group-hover:scale-110 transition-transform">{lab.icon}</div>
-                  <h3 className="text-lg font-semibold mb-2">{lab.name}</h3>
-                  <p className="text-gray-400 text-sm">{lab.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-4">
+              Our <span className="text-gradient-gold">Achievements</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Recognized excellence in national and international competitions
+            </p>
           </motion.div>
 
-          {/* Courses */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-20 glass-morphism rounded-3xl p-8 md:p-12"
-          >
-            <h2 className="text-3xl font-bold mb-8">Course Curriculum</h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {courses.map((course, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="flex items-center space-x-3 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all"
-                >
-                  <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
-                  <span className="text-gray-300">{course}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {achievements.map((achievement, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glass p-6 rounded-2xl border border-primary-500/20 flex items-start space-x-4"
+              >
+                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Trophy className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <span className="inline-block px-3 py-1 bg-primary-500/20 text-primary-400 text-xs font-semibold rounded-full mb-2">
+                    {achievement.year}
+                  </span>
+                  <h3 className="text-lg font-bold text-white mb-1">{achievement.title}</h3>
+                  <p className="text-primary-400 font-semibold text-sm mb-2">{achievement.position}</p>
+                  <p className="text-gray-400 text-sm">{achievement.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          {/* Achievements */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-bold text-center mb-12">Achievements & Recognition</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="glass-morphism p-6 rounded-2xl flex items-start space-x-4"
-                >
-                  <Award className="w-8 h-8 text-accent flex-shrink-0" />
-                  <div>
-                    <h3 className="text-lg font-semibold mb-1">{achievement.title}</h3>
-                    <span className="inline-block px-3 py-1 bg-primary/30 rounded-full text-xs text-primary">
-                      {achievement.level}
-                    </span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* CTA */}
+      {/* Courses */}
+      <section className="py-20 px-4 bg-dark-950">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mt-20 text-center"
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <div className="glass-morphism rounded-3xl p-12">
-              <h2 className="text-3xl font-bold mb-4">Join Our Robotics Program</h2>
-              <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-                Start your journey in robotics and innovation. Limited seats available for our upcoming batch.
-              </p>
-              <a href="/admissions" className="btn-primary inline-flex items-center">
-                Apply Now
-              </a>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-4">
+              Specialized <span className="text-gradient-gold">Courses</span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Comprehensive programs for all skill levels
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {courses.map((course, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glass p-6 rounded-2xl border border-white/10 card-hover"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-white">{course.name}</h3>
+                  <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    course.level === 'Beginner' ? 'bg-green-500/20 text-green-400' :
+                    course.level === 'Intermediate' ? 'bg-yellow-500/20 text-yellow-400' :
+                    course.level === 'Advanced' ? 'bg-red-500/20 text-red-400' :
+                    'bg-blue-500/20 text-blue-400'
+                  }`}>
+                    {course.level}
+                  </span>
+                </div>
+                <p className="text-gray-400 text-sm flex items-center">
+                  <Users className="w-4 h-4 mr-2" />
+                  Duration: {course.duration}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className="py-20 px-4 bg-gradient-to-r from-primary-900/50 to-dark-950">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
+              Join Our <span className="text-gradient-gold">Robotics Program</span>
+            </h2>
+            <p className="text-gray-300 text-lg mb-8">
+              Enroll in our robotics and STEM programs to unlock your potential
+            </p>
+            <a href="/admissions" className="btn-gold inline-flex items-center space-x-2">
+              <span>Apply Now</span>
+            </a>
           </motion.div>
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Robotics
+export default Robotics;
