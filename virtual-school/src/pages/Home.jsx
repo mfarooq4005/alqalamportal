@@ -1,62 +1,109 @@
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Sphere, MeshDistortMaterial } from '@react-three/drei'
-import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
-import { ArrowRight, Play } from 'lucide-react'
+import React, { useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Sphere, MeshDistortMaterial, Stars } from '@react-three/drei';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Award, Users, BookOpen, TrendingUp } from 'lucide-react';
 
 const AnimatedSphere = () => {
+  const meshRef = useRef();
+  
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.2;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
+    }
+  });
+
   return (
-    <Sphere args={[1, 100, 200]} scale={2.4}>
+    <Sphere args={[1, 100, 200]} scale={2.5} ref={meshRef}>
       <MeshDistortMaterial
-        color="#6366f1"
+        color="#d4a017"
         attach="material"
-        distort={0.5}
+        distort={0.4}
         speed={2}
         roughness={0.2}
         metalness={0.8}
       />
     </Sphere>
-  )
-}
+  );
+};
+
+const Hero3D = () => {
+  return (
+    <div className="absolute inset-0 z-0">
+      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[10, 10, 5]} intensity={1} />
+        <pointLight position={[-10, -10, -5]} intensity={0.5} color="#f8d76f" />
+        <AnimatedSphere />
+        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
+      </Canvas>
+    </div>
+  );
+};
+
+const StatCard = ({ icon: Icon, number, label, delay }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
+    viewport={{ once: true }}
+    className="glass p-6 rounded-2xl text-center card-hover border border-primary-500/20"
+  >
+    <Icon className="w-8 h-8 text-primary-400 mx-auto mb-3" />
+    <h3 className="text-3xl font-bold font-heading text-gradient-gold mb-2">{number}</h3>
+    <p className="text-gray-300 text-sm">{label}</p>
+  </motion.div>
+);
 
 const Home = () => {
+  const features = [
+    { icon: BookOpen, title: 'Cambridge Curriculum', description: 'Internationally recognized O & A Level programs' },
+    { icon: Award, title: 'Excellence in Education', description: 'Top results in Cambridge examinations' },
+    { icon: Users, title: 'Expert Faculty', description: 'Highly qualified and experienced teachers' },
+    { icon: TrendingUp, title: 'Modern Facilities', description: 'State-of-the-art labs and learning spaces' },
+  ];
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section with 3D */}
+      {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* 3D Background */}
-        <div className="absolute inset-0 z-0">
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <AnimatedSphere />
-            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-          </Canvas>
-        </div>
-
+        <Hero3D />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-dark-950/50 via-dark-950/70 to-dark-950 z-10" />
+        
         {/* Content */}
-        <div className="container-custom mx-auto px-4 relative z-10 text-center">
+        <div className="relative z-20 text-center px-4 max-w-5xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-              <span className="gradient-text">Future of</span>
+            <span className="inline-block px-4 py-2 bg-primary-500/20 border border-primary-500/30 rounded-full text-primary-400 text-sm font-medium mb-6">
+              Admissions Open for 2024-25
+            </span>
+            
+            <h1 className="text-5xl md:text-7xl font-bold font-heading text-white mb-6 leading-tight">
+              Al Qalam{' '}
+              <span className="text-gradient-gold">International</span>
               <br />
-              <span className="text-white">Education</span>
+              Cambridge School
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              Experience world-class virtual learning with AI-powered education, 
-              cutting-edge robotics, and STREAM curriculum designed for tomorrow's leaders.
+            
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Nurturing Excellence, Building Character, Shaping Futures. 
+              Join a community dedicated to academic excellence and holistic development.
             </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/admissions" className="btn-primary inline-flex items-center justify-center">
-                Apply Now
-                <ArrowRight className="ml-2 w-5 h-5" />
+              <Link to="/admissions" className="btn-gold inline-flex items-center justify-center space-x-2">
+                <span>Apply Now</span>
+                <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link to="/about" className="btn-secondary inline-flex items-center justify-center">
-                <Play className="mr-2 w-5 h-5" />
+              <Link to="/about" className="btn-outline-gold inline-flex items-center justify-center">
                 Learn More
               </Link>
             </div>
@@ -67,83 +114,64 @@ const Home = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
         >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5 }}
-              className="w-1.5 h-3 bg-white/60 rounded-full mt-2"
-            />
-          </div>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-primary-500/50 rounded-full flex justify-center pt-2"
+          >
+            <motion.div className="w-1.5 h-3 bg-primary-500 rounded-full" />
+          </motion.div>
         </motion.div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-20 px-4 bg-dark-950">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <StatCard icon={BookOpen} number="15+" label="Years of Excellence" delay={0.1} />
+            <StatCard icon={Users} number="2000+" label="Students Enrolled" delay={0.2} />
+            <StatCard icon={Award} number="98%" label="Pass Rate" delay={0.3} />
+            <StatCard icon={TrendingUp} number="50+" label="University Placements" delay={0.4} />
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
-      <section className="section-padding bg-gradient-to-b from-transparent to-black/20">
-        <div className="container-custom mx-auto">
+      <section className="py-20 px-4 bg-gradient-to-b from-dark-950 to-dark-900">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Why Choose <span className="gradient-text">Virtual School?</span>
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-4">
+              Why Choose <span className="text-gradient-gold">Al Qalam</span>?
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              We combine technology, innovation, and excellence to create the perfect learning environment.
+              We provide world-class education with a focus on academic excellence and character development
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'AI-Powered Learning',
-                description: 'Personalized education paths powered by advanced AI technology.',
-                icon: '🤖'
-              },
-              {
-                title: 'Robotics Lab',
-                description: 'State-of-the-art robotics facilities for hands-on engineering experience.',
-                icon: '⚙️'
-              },
-              {
-                title: 'STREAM Curriculum',
-                description: 'Integrated approach combining Science, Technology, Robotics, Engineering, Arts & Mathematics.',
-                icon: '🔬'
-              },
-              {
-                title: 'Global Community',
-                description: 'Connect with students and educators from around the world.',
-                icon: '🌍'
-              },
-              {
-                title: 'Flexible Learning',
-                description: 'Learn at your own pace with our adaptive LMS platform.',
-                icon: '📚'
-              },
-              {
-                title: 'Expert Instructors',
-                description: 'Learn from industry professionals and certified educators.',
-                icon: '👨‍🏫'
-              }
-            ].map((feature, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="glass-morphism p-6 rounded-2xl hover:bg-white/15 transition-all duration-300 cursor-pointer group"
+                className="glass p-8 rounded-2xl card-hover border border-primary-500/20"
               >
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-6">
+                  <feature.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold font-heading text-white mb-3">{feature.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -151,33 +179,29 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding">
-        <div className="container-custom mx-auto">
+      <section className="py-20 px-4 bg-gradient-to-r from-primary-900/50 to-dark-950">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="glass-morphism rounded-3xl p-12 text-center relative overflow-hidden"
+            viewport={{ once: true }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20" />
-            <div className="relative z-10">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                Ready to Start Your Journey?
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Join thousands of students already experiencing the future of education.
-              </p>
-              <Link to="/admissions" className="btn-primary inline-flex items-center">
-                Get Started Today
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
+              Ready to Join Our <span className="text-gradient-gold">Community</span>?
+            </h2>
+            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+              Start your journey towards excellence. Applications are now open for the upcoming academic year.
+            </p>
+            <Link to="/admissions" className="btn-gold inline-flex items-center space-x-2">
+              <span>Begin Application</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </motion.div>
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

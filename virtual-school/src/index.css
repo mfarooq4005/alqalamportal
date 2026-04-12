@@ -2,67 +2,113 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary-gold: #d4a017;
+  --color-dark-bg: #1a1d21;
+  --color-dark-card: #212529;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-  color: #f8fafc;
-  min-height: 100vh;
-  overflow-x: hidden;
+  background-color: #1a1d21;
+  color: #f8f9fa;
+  line-height: 1.6;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
 }
 
-::-webkit-scrollbar-track {
-  background: #1e293b;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #6366f1;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #8b5cf6;
-}
-
-.glass-morphism {
-  background: rgba(255, 255, 255, 0.1);
+/* Glassmorphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #6366f1, #06b6d4);
+.glass-nav {
+  background: rgba(26, 29, 33, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+/* Golden Gradient Text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #f8d76f 0%, #d4a017 50%, #b8860b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.btn-primary {
-  @apply bg-gradient-to-r from-primary to-accent px-6 py-3 rounded-full font-semibold 
-         transform transition-all duration-300 hover:scale-105 hover:shadow-lg 
-         hover:shadow-primary/50 active:scale-95;
+/* Button Styles */
+.btn-gold {
+  @apply px-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-lg shadow-lg hover:from-primary-600 hover:to-primary-700 transform hover:-translate-y-0.5 transition-all duration-300;
 }
 
-.btn-secondary {
-  @apply glass-morphism px-6 py-3 rounded-full font-semibold 
-         transform transition-all duration-300 hover:scale-105 hover:bg-white/20 
-         active:scale-95;
+.btn-outline-gold {
+  @apply px-6 py-3 border-2 border-primary-500 text-primary-500 font-semibold rounded-lg hover:bg-primary-500 hover:text-white transition-all duration-300;
 }
 
-.section-padding {
-  @apply py-20 px-4 md:px-8 lg:px-16;
+/* Card Hover Effects */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/20 hover:-translate-y-1;
 }
 
-.container-custom {
-  @apply max-w-7xl mx-auto;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1d21;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4a017;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8860b;
+}
+
+/* Animation Classes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(212, 160, 23, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(212, 160, 23, 0.6); }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Portal Login Box */
+.portal-card {
+  @apply glass p-8 rounded-2xl card-hover cursor-pointer border border-primary-500/30;
+}
+
+.portal-card:hover {
+  @apply border-primary-500 bg-primary-500/10;
 }
