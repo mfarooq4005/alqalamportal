@@ -20,37 +20,32 @@ const AnimatedSphere = () => {
   );
 };
 
-const FloatingShape = ({ position, color, scale }) => (
-  <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-    <Sphere args={[0.5, 32, 32]} scale={scale} position={position}>
-      <MeshDistortMaterial color={color} attach="material" distort={0.3} speed={1.5} roughness={0.3} metalness={0.6} transparent opacity={0.6} />
-    </Sphere>
-  </Float>
-);
-
-const Hero3D = () => (
-  <div className="absolute inset-0 z-0">
-    <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-      <ambientLight intensity={0.8} />
-      <directionalLight position={[10, 10, 5]} intensity={2.0} />
-      <pointLight position={[-10, -10, -5]} intensity={1.0} color="#f97316" />
-      <pointLight position={[10, -10, 5]} intensity={0.5} color="#a855f7" />
-      <AnimatedSphere />
-      <FloatingShape position={[-3, 2, -2]} color="#a855f7" scale={0.8} />
-      <FloatingShape position={[3, -2, -1]} color="#f97316" scale={0.6} />
-      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0.5} fade speed={2} />
-      <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.3} />
-    </Canvas>
-  </div>
-);
-
-const StatCard = ({ icon: Icon, number, label, delay, gradient }) => (
-  <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay }} viewport={{ once: true }} className="card-tech p-8 text-center group">
-    <div className={`w-16 h-16 ${gradient} rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-      <Icon className="w-8 h-8 text-white" />
+const Hero3D = () => {
+  return (
+    <div className="absolute inset-0 z-0 opacity-60">
+      <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[10, 10, 5]} intensity={1.5} />
+        <pointLight position={[-10, -10, -5]} intensity={0.8} color="#fbbf24" />
+        <AnimatedSphere />
+        <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
+        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
+      </Canvas>
     </div>
-    <h3 className={`text-4xl font-bold ${gradient} bg-clip-text text-transparent mb-2`}>{number}</h3>
-    <p className="text-slate-600 font-medium">{label}</p>
+  );
+};
+
+const StatCard = ({ icon: Icon, number, label, delay }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
+    viewport={{ once: true }}
+    className="card-bright p-6 rounded-2xl text-center border border-blue-200"
+  >
+    <Icon className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+    <h3 className="text-3xl font-bold font-heading text-gradient-blue mb-2">{number}</h3>
+    <p className="text-gray-600 text-sm">{label}</p>
   </motion.div>
 );
 
@@ -73,27 +68,63 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+    <div className="min-h-screen bg-gradient-bright">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-blue-50 via-white to-slate-50">
         <Hero3D />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/50 to-white z-10" />
+        
+        {/* Content */}
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-block px-6 py-2.5 bg-gradient-to-r from-primary-100 to-secondary-100 border border-primary-200 rounded-full text-primary-700 text-sm font-semibold mb-6 shadow-sm animate-pulse">✨ Admissions Open for Academic Year 2024-25</span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">Al Qalam{' '}<span className="text-gradient-tech block mt-2">International</span><br /><span className="text-gradient-primary">Cambridge School</span></h1>
-            <p className="text-xl md:text-2xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed font-light">Nurturing Excellence in Robotics & STREAM Education. Building Character, Shaping Futures with Innovation.</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="inline-block px-4 py-2 bg-blue-100 border border-blue-200 rounded-full text-blue-700 text-sm font-medium mb-6">
+              Admissions Open for 2024-25
+            </span>
+            
+            <h1 className="text-5xl md:text-7xl font-bold font-heading text-slate-800 mb-6 leading-tight">
+              Al Qalam{' '}
+              <span className="text-gradient-blue">International</span>
+              <br />
+              <span className="text-gradient-blue">Cambridge School</span>
+            </h1>
+            
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Nurturing Excellence, Building Character, Shaping Futures. 
+              Join a community dedicated to academic excellence and holistic development.
+            </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/admissions" className="btn-gradient inline-flex items-center justify-center space-x-2"><span>Apply Now</span><ArrowRight className="w-5 h-5" /></Link>
               <Link to="/robotics" className="btn-secondary inline-flex items-center justify-center">Explore Robotics</Link>
             </div>
           </motion.div>
         </div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.8 }} className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10">
-          <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2, repeat: Infinity }} className="w-7 h-12 border-2 border-primary-400 rounded-full flex justify-center pt-2">
-            <motion.div className="w-2 h-3 bg-gradient-to-b from-primary-500 to-secondary-500 rounded-full" />
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center pt-2"
+          >
+            <motion.div className="w-1.5 h-3 bg-blue-500 rounded-full" />
           </motion.div>
         </motion.div>
       </section>
-      <section className="py-20 px-4 bg-gradient-subtle">
+
+      {/* Stats Section */}
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             <StatCard icon={BookOpen} number="15+" label="Years of Excellence" delay={0.1} gradient="bg-gradient-to-br from-primary-500 to-primary-700" />
@@ -103,12 +134,69 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-24 px-4 bg-gradient-tech">
+
+      {/* Features Section */}
+      <section className="py-20 px-4 bg-gradient-bright">
         <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-20">
-            <span className="inline-block px-4 py-2 bg-primary-100 border border-primary-200 rounded-full text-primary-700 text-sm font-semibold mb-4">Why Choose Al Qalam?</span>
-            <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">Excellence in{' '}<span className="text-gradient-tech">Education</span></h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">We provide world-class education with focus on Robotics, STREAM, and holistic development</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-800 mb-4">
+              Why Choose <span className="text-gradient-blue">Al Qalam</span>?
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We provide world-class education with a focus on academic excellence and character development
+            </p>
           </motion.div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (<FeatureCard key={index} icon={feature.icon} title={feature.title} description={featu
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="card-bright p-8 rounded-2xl border border-blue-100"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6">
+                  <feature.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold font-heading text-slate-800 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 bg-gradient-blue">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Ready to Join Our <span className="text-accent-300">Community</span>?
+            </h2>
+            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+              Start your journey towards excellence. Applications are now open for the upcoming academic year.
+            </p>
+            <Link to="/admissions" className="btn-accent inline-flex items-center space-x-2">
+              <span>Begin Application</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
