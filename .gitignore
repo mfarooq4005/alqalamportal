@@ -15,6 +15,9 @@ build/
 .vscode/
 .idea/
 
+# Logs
+*.log
+
 # Python
 __pycache__/
 *.pyc

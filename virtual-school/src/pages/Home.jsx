@@ -16,14 +16,14 @@ const AnimatedSphere = () => {
   });
 
   return (
-    <Sphere args={[1, 100, 200]} scale={2.5} ref={meshRef}>
+    <Sphere args={[1, 100, 200]} scale={2.2} ref={meshRef}>
       <MeshDistortMaterial
         color="#3b82f6"
         attach="material"
-        distort={0.4}
-        speed={2}
+        distort={0.35}
+        speed={1.5}
         roughness={0.2}
-        metalness={0.8}
+        metalness={0.6}
       />
     </Sphere>
   );
@@ -31,13 +31,13 @@ const AnimatedSphere = () => {
 
 const Hero3D = () => {
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0 opacity-60">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
         <ambientLight intensity={0.8} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} />
         <pointLight position={[-10, -10, -5]} intensity={0.8} color="#fbbf24" />
         <AnimatedSphere />
-        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+        <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
         <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
       </Canvas>
     </div>
@@ -60,10 +60,10 @@ const StatCard = ({ icon: Icon, number, label, delay }) => (
 
 const Home = () => {
   const features = [
-    { icon: BookOpen, title: 'Cambridge Curriculum', description: 'Internationally recognized O & A Level programs' },
-    { icon: Award, title: 'Excellence in Education', description: 'Top results in Cambridge examinations' },
-    { icon: Users, title: 'Expert Faculty', description: 'Highly qualified and experienced teachers' },
-    { icon: TrendingUp, title: 'Modern Facilities', description: 'State-of-the-art labs and learning spaces' },
+    { icon: BookOpen, title: 'Cambridge Curriculum', description: 'Internationally recognized O & A Level programs with global accreditation' },
+    { icon: Award, title: 'Excellence in Education', description: 'Consistently outstanding results in Cambridge examinations worldwide' },
+    { icon: Users, title: 'Expert Faculty', description: 'Highly qualified teachers dedicated to student success and growth' },
+    { icon: TrendingUp, title: 'Modern Facilities', description: 'State-of-the-art laboratories, libraries, and learning environments' },
   ];
 
   return (
@@ -76,7 +76,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/50 to-white z-10" />
         
         {/* Content */}
-        <div className="relative z-20 text-center px-4 max-w-5xl mx-auto">
+        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -90,7 +90,7 @@ const Home = () => {
               Al Qalam{' '}
               <span className="text-gradient-blue">International</span>
               <br />
-              Cambridge School
+              <span className="text-gradient-blue">Cambridge School</span>
             </h1>
             
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
@@ -115,7 +115,7 @@ const Home = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -130,7 +130,7 @@ const Home = () => {
       {/* Stats Section */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             <StatCard icon={BookOpen} number="15+" label="Years of Excellence" delay={0.1} />
             <StatCard icon={Users} number="2000+" label="Students Enrolled" delay={0.2} />
             <StatCard icon={Award} number="98%" label="Pass Rate" delay={0.3} />
@@ -147,7 +147,7 @@ const Home = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
             <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-800 mb-4">
               Why Choose <span className="text-gradient-blue">Al Qalam</span>?
@@ -187,13 +187,13 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
-              Ready to Join Our <span className="text-gradient-gold">Community</span>?
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Ready to Join Our <span className="text-accent-300">Community</span>?
             </h2>
             <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
               Start your journey towards excellence. Applications are now open for the upcoming academic year.
             </p>
-            <Link to="/admissions" className="btn-gold inline-flex items-center space-x-2">
+            <Link to="/admissions" className="btn-accent inline-flex items-center space-x-2">
               <span>Begin Application</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
