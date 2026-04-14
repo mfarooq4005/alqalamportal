@@ -25,12 +25,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-600 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-lg">
               <BookOpen className="w-7 h-7 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold font-heading text-white">Al Qalam</h1>
-              <p className="text-xs text-primary-400">International Cambridge School</p>
+              <h1 className="text-xl font-bold font-heading text-slate-900">Al Qalam</h1>
+              <p className="text-xs text-slate-600 font-medium">International Cambridge School</p>
             </div>
           </Link>
 
@@ -42,8 +42,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   isActive(link.path)
-                    ? 'text-primary-400 bg-primary-500/10'
-                    : 'text-gray-300 hover:text-primary-400 hover:bg-white/5'
+                    ? 'text-primary-600 bg-primary-50'
+                    : 'text-slate-600 hover:text-primary-600 hover:bg-primary-50'
                 }`}
               >
                 {link.name}
@@ -62,7 +62,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-300 hover:text-primary-400 hover:bg-white/5"
+            className="lg:hidden p-2 rounded-lg text-slate-600 hover:text-primary-600 hover:bg-primary-50"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -71,7 +71,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden glass border-t border-white/10">
+        <div className="lg:hidden glass-nav border-t border-slate-200">
           <div className="px-4 py-4 space-y-2">
             {navLinks.map((link) => (
               <Link
@@ -80,8 +80,8 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 ${
                   isActive(link.path)
-                    ? 'text-primary-400 bg-primary-500/10'
-                    : 'text-gray-300 hover:text-primary-400 hover:bg-white/5'
+                    ? 'text-primary-600 bg-primary-50'
+                    : 'text-slate-600 hover:text-primary-600 hover:bg-primary-50'
                 }`}
               >
                 {link.name}

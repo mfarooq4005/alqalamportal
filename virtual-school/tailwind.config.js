@@ -19,7 +19,7 @@ export default {
           800: '#1e40af',
           900: '#1e3a8a',
         },
-        amber: {
+        accent: {
           50: '#fffbeb',
           100: '#fef3c7',
           200: '#fde68a',
