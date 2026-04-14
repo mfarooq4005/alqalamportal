@@ -178,7 +178,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .portal-card-selected {
-  @apply bg-gradient-to-br from-primary-50 to-secondary-50 border-primary-500 shadow-2xl scale-105;
+  @apply bg-gradient-to-br from-primary-50 to-accent-50 border-primary-500 shadow-2xl scale-105;
 }
 
 /* ========================================
