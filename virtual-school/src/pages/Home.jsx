@@ -1,30 +1,21 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Sphere, MeshDistortMaterial, Stars } from '@react-three/drei';
+import { OrbitControls, Sphere, MeshDistortMaterial, Stars, Float } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Award, Users, BookOpen, TrendingUp } from 'lucide-react';
+import { ArrowRight, Award, Users, BookOpen, TrendingUp, Cpu, Atom } from 'lucide-react';
 
 const AnimatedSphere = () => {
   const meshRef = useRef();
-  
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.x = state.clock.elapsedTime * 0.2;
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
     }
   });
-
   return (
     <Sphere args={[1, 100, 200]} scale={2.2} ref={meshRef}>
-      <MeshDistortMaterial
-        color="#3b82f6"
-        attach="material"
-        distort={0.35}
-        speed={1.5}
-        roughness={0.2}
-        metalness={0.6}
-      />
+      <MeshDistortMaterial color="#14b8a6" attach="material" distort={0.4} speed={2} roughness={0.2} metalness={0.8} />
     </Sphere>
   );
 };
@@ -58,12 +49,22 @@ const StatCard = ({ icon: Icon, number, label, delay }) => (
   </motion.div>
 );
 
+const FeatureCard = ({ icon: Icon, title, description, index, gradient }) => (
+  <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }} className="card-tech p-8 group hover:shadow-2xl transition-all duration-500">
+    <div className={`w-16 h-16 ${gradient} rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}>
+      <Icon className="w-8 h-8 text-white" />
+    </div>
+    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary-600 transition-colors">{title}</h3>
+    <p className="text-slate-600 leading-relaxed">{description}</p>
+  </motion.div>
+);
+
 const Home = () => {
   const features = [
-    { icon: BookOpen, title: 'Cambridge Curriculum', description: 'Internationally recognized O & A Level programs with global accreditation' },
-    { icon: Award, title: 'Excellence in Education', description: 'Consistently outstanding results in Cambridge examinations worldwide' },
-    { icon: Users, title: 'Expert Faculty', description: 'Highly qualified teachers dedicated to student success and growth' },
-    { icon: TrendingUp, title: 'Modern Facilities', description: 'State-of-the-art laboratories, libraries, and learning environments' },
+    { icon: BookOpen, title: 'Cambridge Curriculum', description: 'Internationally recognized O & A Level programs with global accreditation', gradient: 'bg-gradient-to-br from-primary-500 to-primary-700' },
+    { icon: Cpu, title: 'Robotics & AI', description: 'Cutting-edge robotics lab with AI integration for future-ready learning', gradient: 'bg-gradient-to-br from-secondary-500 to-secondary-700' },
+    { icon: Atom, title: 'STREAM Education', description: 'Science, Technology, Robotics, Engineering, Arts & Mathematics combined', gradient: 'bg-gradient-to-br from-accent-500 to-accent-700' },
+    { icon: Users, title: 'Expert Faculty', description: 'Highly qualified teachers dedicated to student success and holistic growth', gradient: 'bg-gradient-to-br from-primary-500 to-secondary-600' },
   ];
 
   return (
@@ -99,13 +100,8 @@ const Home = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/admissions" className="btn-primary inline-flex items-center justify-center space-x-2">
-                <span>Apply Now</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link to="/about" className="btn-secondary inline-flex items-center justify-center">
-                Learn More
-              </Link>
+              <Link to="/admissions" className="btn-gradient inline-flex items-center justify-center space-x-2"><span>Apply Now</span><ArrowRight className="w-5 h-5" /></Link>
+              <Link to="/robotics" className="btn-secondary inline-flex items-center justify-center">Explore Robotics</Link>
             </div>
           </motion.div>
         </div>
@@ -131,10 +127,10 @@ const Home = () => {
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
-            <StatCard icon={BookOpen} number="15+" label="Years of Excellence" delay={0.1} />
-            <StatCard icon={Users} number="2000+" label="Students Enrolled" delay={0.2} />
-            <StatCard icon={Award} number="98%" label="Pass Rate" delay={0.3} />
-            <StatCard icon={TrendingUp} number="50+" label="University Placements" delay={0.4} />
+            <StatCard icon={BookOpen} number="15+" label="Years of Excellence" delay={0.1} gradient="bg-gradient-to-br from-primary-500 to-primary-700" />
+            <StatCard icon={Users} number="2000+" label="Students Enrolled" delay={0.2} gradient="bg-gradient-to-br from-secondary-500 to-secondary-700" />
+            <StatCard icon={Award} number="98%" label="Pass Rate" delay={0.3} gradient="bg-gradient-to-br from-accent-500 to-accent-700" />
+            <StatCard icon={TrendingUp} number="50+" label="University Placements" delay={0.4} gradient="bg-gradient-to-br from-primary-500 to-secondary-600" />
           </div>
         </div>
       </section>
@@ -156,7 +152,6 @@ const Home = () => {
               We provide world-class education with a focus on academic excellence and character development
             </p>
           </motion.div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <motion.div
