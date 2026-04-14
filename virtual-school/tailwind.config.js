@@ -8,29 +8,40 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#fef9e7',
-          100: '#fdf3cf',
-          200: '#fae79f',
-          300: '#f8d76f',
-          400: '#f5c33f',
-          500: '#d4a017', // Golden main
-          600: '#b8860b',
-          700: '#916b0f',
-          800: '#75560f',
-          900: '#61470d',
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
-        dark: {
-          50: '#f8f9fa',
-          100: '#f1f3f5',
-          200: '#e9ecef',
-          300: '#dee2e6',
-          400: '#ced4da',
-          500: '#adb5bd',
-          600: '#868e96',
-          700: '#495057',
-          800: '#343a40',
-          900: '#212529', // Dark background
-          950: '#1a1d21',
+        amber: {
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
+        },
+        slate: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
         }
       },
       fontFamily: {
@@ -39,7 +50,7 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'hero-pattern': "linear-gradient(to bottom right, rgba(26, 29, 33, 0.95), rgba(33, 37, 41, 0.9)), url('/school-bg.jpg')",
+        'hero-pattern': "linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(241, 245, 249, 0.95)), url('/school-bg.jpg')",
       }
     },
   },
