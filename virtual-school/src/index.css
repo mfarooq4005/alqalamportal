@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   AL QALAM INTERNATIONAL CAMBRIDGE SCHOOL
+   Modern Tech-Inspired Educational Theme
+   Robotics & STREAM Focused Design
+   ======================================== */
+
+:root {
+  --color-primary-blue: #1e40af;
+  --color-accent-gold: #d4a017;
+  --color-light-bg: #f8fafc;
+  --color-white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+/* Clean Card Design */
+.card-bright {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-bright:hover {
+  box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+  transform: translateY(-4px);
+  border-color: #1e40af;
+}
+
+/* Professional Button Styles */
+.btn-primary {
+  @apply px-6 py-3 bg-gradient-to-r from-blue-700 to-blue-600 text-white font-semibold rounded-lg shadow-md hover:from-blue-800 hover:to-blue-700 transform hover:-translate-y-0.5 transition-all duration-300;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 border-2 border-blue-700 text-blue-700 font-semibold rounded-lg hover:bg-blue-700 hover:text-white transition-all duration-300;
+}
+
+.btn-gold {
+  @apply px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-lg shadow-md hover:from-yellow-600 hover:to-yellow-700 transform hover:-translate-y-0.5 transition-all duration-300;
+}
+
+/* Gradient Text */
+.text-gradient-blue {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #d4a017 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-elevated {
+  @apply bg-white rounded-3xl shadow-xl border border-slate-100;
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.card-tech {
+  @apply bg-white rounded-3xl overflow-hidden relative;
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  box-shadow: 0 10px 40px rgba(20, 184, 166, 0.1);
+}
+
+.card-tech::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary-500), var(--color-secondary-500), var(--color-accent-500));
+}
+
+/* Glassmorphism - Modern Light Version */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(20, 184, 166, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   SECTION BACKGROUNDS - DYNAMIC & MODERN
+   ======================================== */
+
+.bg-gradient-light {
+  background: linear-gradient(135deg, var(--color-primary-50) 0%, #ffffff 50%, var(--color-secondary-50) 100%);
+}
+
+.bg-gradient-subtle {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-slate-50) 100%);
+}
+
+.bg-gradient-tech {
+  background: linear-gradient(135deg, #f0fdfa 0%, #faf5ff 50%, #fff7ed 100%);
+}
+
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(20, 184, 166, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 184, 166, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(20, 184, 166, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* ========================================
+   NAVIGATION & PORTAL STYLES
+   ======================================== */
+
+.nav-link {
+  @apply px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:text-primary-600 hover:bg-primary-50 transition-all duration-300;
+}
+
+.nav-link-active {
+  @apply text-primary-600 bg-primary-50 shadow-sm;
+}
+
+.portal-card {
+  @apply bg-white p-10 rounded-3xl transition-all duration-500 cursor-pointer border-2 border-slate-200 shadow-lg hover:shadow-2xl hover:border-primary-400 hover:bg-primary-50 hover:-translate-y-2;
+}
+
+.portal-card-selected {
+  @apply bg-gradient-to-br from-primary-50 to-accent-50 border-primary-500 shadow-2xl scale-105;
+}
+
+/* ========================================
+   FORM STYLES - CLEAN & ACCESSIBLE
+   ======================================== */
+
+.input-field {
+  @apply w-full px-5 py-4 border-2 border-slate-200 rounded-2xl text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary-500 focus:ring-4 focus:ring-primary-200 transition-all duration-300 font-medium;
+}
+
+.input-label {
+  @apply block text-sm font-bold text-slate-700 mb-2;
+}
+
+.input-group {
+  @apply relative;
+}
+
+.input-icon {
+  @apply absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5;
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR - ELEGANT & MODERN
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e40af;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1e3a8a;
+}
+
+/* ========================================
+   ANIMATIONS - ADVANCED & SMOOTH
+   ======================================== */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(5deg); }
+  66% { transform: translateY(-10px) rotate(-5deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(-5deg); }
+  66% { transform: translateY(-25px) rotate(5deg); }
+}
+
+.animate-float-delayed {
+  animation: float-delayed 7s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(30, 64, 175, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(30, 64, 175, 0.6); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right, var(--color-slate-100) 0%, var(--color-slate-200) 50%, var(--color-slate-100) 100%);
+  background-size: 1000px 100%;
+}
+
+/* Portal Login Box */
+.portal-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.portal-card:hover {
+  border-color: #1e40af;
+  background: #eff6ff;
+  box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Navigation */
+.nav-bright {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 2px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Section Backgrounds */
+.bg-gradient-bright {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 50%, #f0f9ff 100%);
+}
+
+.bg-gradient-blue {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+  /* Can be enabled if needed */
+}
