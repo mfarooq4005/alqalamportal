@@ -18,7 +18,7 @@ const AnimatedSphere = () => {
   return (
     <Sphere args={[1, 100, 200]} scale={2.5} ref={meshRef}>
       <MeshDistortMaterial
-        color="#d4a017"
+        color="#3b82f6"
         attach="material"
         distort={0.4}
         speed={2}
@@ -33,9 +33,9 @@ const Hero3D = () => {
   return (
     <div className="absolute inset-0 z-0">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
-        <pointLight position={[-10, -10, -5]} intensity={0.5} color="#f8d76f" />
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[10, 10, 5]} intensity={1.5} />
+        <pointLight position={[-10, -10, -5]} intensity={0.8} color="#fbbf24" />
         <AnimatedSphere />
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
@@ -50,11 +50,11 @@ const StatCard = ({ icon: Icon, number, label, delay }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true }}
-    className="glass p-6 rounded-2xl text-center card-hover border border-primary-500/20"
+    className="card-bright p-6 rounded-2xl text-center border border-blue-200"
   >
-    <Icon className="w-8 h-8 text-primary-400 mx-auto mb-3" />
-    <h3 className="text-3xl font-bold font-heading text-gradient-gold mb-2">{number}</h3>
-    <p className="text-gray-300 text-sm">{label}</p>
+    <Icon className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+    <h3 className="text-3xl font-bold font-heading text-gradient-blue mb-2">{number}</h3>
+    <p className="text-gray-600 text-sm">{label}</p>
   </motion.div>
 );
 
@@ -67,13 +67,13 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-bright">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-blue-50 via-white to-slate-50">
         <Hero3D />
         
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-950/50 via-dark-950/70 to-dark-950 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/50 to-white z-10" />
         
         {/* Content */}
         <div className="relative z-20 text-center px-4 max-w-5xl mx-auto">
@@ -82,28 +82,28 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block px-4 py-2 bg-primary-500/20 border border-primary-500/30 rounded-full text-primary-400 text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-2 bg-blue-100 border border-blue-200 rounded-full text-blue-700 text-sm font-medium mb-6">
               Admissions Open for 2024-25
             </span>
             
-            <h1 className="text-5xl md:text-7xl font-bold font-heading text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold font-heading text-slate-800 mb-6 leading-tight">
               Al Qalam{' '}
-              <span className="text-gradient-gold">International</span>
+              <span className="text-gradient-blue">International</span>
               <br />
               Cambridge School
             </h1>
             
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
               Nurturing Excellence, Building Character, Shaping Futures. 
               Join a community dedicated to academic excellence and holistic development.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/admissions" className="btn-gold inline-flex items-center justify-center space-x-2">
+              <Link to="/admissions" className="btn-primary inline-flex items-center justify-center space-x-2">
                 <span>Apply Now</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link to="/about" className="btn-outline-gold inline-flex items-center justify-center">
+              <Link to="/about" className="btn-secondary inline-flex items-center justify-center">
                 Learn More
               </Link>
             </div>
@@ -120,15 +120,15 @@ const Home = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-primary-500/50 rounded-full flex justify-center pt-2"
+            className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center pt-2"
           >
-            <motion.div className="w-1.5 h-3 bg-primary-500 rounded-full" />
+            <motion.div className="w-1.5 h-3 bg-blue-500 rounded-full" />
           </motion.div>
         </motion.div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 bg-dark-950">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <StatCard icon={BookOpen} number="15+" label="Years of Excellence" delay={0.1} />
@@ -140,7 +140,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-b from-dark-950 to-dark-900">
+      <section className="py-20 px-4 bg-gradient-bright">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -149,10 +149,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-4">
-              Why Choose <span className="text-gradient-gold">Al Qalam</span>?
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-800 mb-4">
+              Why Choose <span className="text-gradient-blue">Al Qalam</span>?
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               We provide world-class education with a focus on academic excellence and character development
             </p>
           </motion.div>
@@ -165,13 +165,13 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="glass p-8 rounded-2xl card-hover border border-primary-500/20"
+                className="card-bright p-8 rounded-2xl border border-blue-100"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6">
                   <feature.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-xl font-bold font-heading text-white mb-3">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-bold font-heading text-slate-800 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -179,7 +179,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-primary-900/50 to-dark-950">
+      <section className="py-20 px-4 bg-gradient-blue">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -190,7 +190,7 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-bold font-heading text-white mb-6">
               Ready to Join Our <span className="text-gradient-gold">Community</span>?
             </h2>
-            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
               Start your journey towards excellence. Applications are now open for the upcoming academic year.
             </p>
             <Link to="/admissions" className="btn-gold inline-flex items-center space-x-2">
