@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+package-lock.json
 
 # Build artifacts
 dist/
@@ -15,7 +16,7 @@ build/
 .vscode/
 .idea/
 
-# Logs
+# Logs and temp files
 *.log
 
 # Python

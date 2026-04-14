@@ -13,24 +13,24 @@ import Admissions from './pages/Admissions';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import Portal from './pages/Portal';
+import AdminDashboard from './pages/AdminDashboard';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Router>
-      <div className="min-h-screen bg-dark-950">
-        <Navbar />
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/academics" element={<Academics />} />
-          <Route path="/robotics" element={<Robotics />} />
-          <Route path="/stream" element={<STREAM />} />
-          <Route path="/admissions" element={<Admissions />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/portal" element={<Portal />} />
+          <Route path="/" element={<><Navbar /><Home /><AIChatWidget /></>} />
+          <Route path="/about" element={<><Navbar /><About /><AIChatWidget /></>} />
+          <Route path="/academics" element={<><Navbar /><Academics /><AIChatWidget /></>} />
+          <Route path="/robotics" element={<><Navbar /><Robotics /><AIChatWidget /></>} />
+          <Route path="/stream" element={<><Navbar /><STREAM /><AIChatWidget /></>} />
+          <Route path="/admissions" element={<><Navbar /><Admissions /><AIChatWidget /></>} />
+          <Route path="/gallery" element={<><Navbar /><Gallery /><AIChatWidget /></>} />
+          <Route path="/contact" element={<><Navbar /><Contact /><AIChatWidget /></>} />
+          <Route path="/portal" element={<><Navbar /><Portal /><AIChatWidget /></>} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
-        <AIChatWidget />
       </div>
     </Router>
   </React.StrictMode>
