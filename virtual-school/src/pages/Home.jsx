@@ -33,9 +33,9 @@ const Hero3D = () => {
   return (
     <div className="absolute inset-0 z-0 opacity-60">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        <ambientLight intensity={1.0} />
-        <directionalLight position={[10, 10, 5]} intensity={2.0} />
-        <pointLight position={[-10, -10, -5]} intensity={1.0} color="#fbbf24" />
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[10, 10, 5]} intensity={1.5} />
+        <pointLight position={[-10, -10, -5]} intensity={0.8} color="#fbbf24" />
         <AnimatedSphere />
         <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
         <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
@@ -50,11 +50,11 @@ const StatCard = ({ icon: Icon, number, label, delay }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true }}
-    className="card-hover p-8 text-center bg-white rounded-2xl shadow-lg border border-slate-100"
+    className="card-bright p-6 rounded-2xl text-center border border-blue-200"
   >
-    <Icon className="w-10 h-10 text-primary-600 mx-auto mb-4" />
-    <h3 className="text-4xl font-bold text-gradient-primary mb-2">{number}</h3>
-    <p className="text-slate-600 font-medium">{label}</p>
+    <Icon className="w-8 h-8 text-blue-600 mx-auto mb-3" />
+    <h3 className="text-3xl font-bold font-heading text-gradient-blue mb-2">{number}</h3>
+    <p className="text-gray-600 text-sm">{label}</p>
   </motion.div>
 );
 
@@ -67,10 +67,13 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-bright">
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-white to-accent-50">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-blue-50 via-white to-slate-50">
         <Hero3D />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/50 to-white z-10" />
         
         {/* Content */}
         <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
@@ -79,18 +82,18 @@ const Home = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block px-6 py-2.5 bg-primary-100 border border-primary-200 rounded-full text-primary-700 text-sm font-semibold mb-6 shadow-sm">
-              ✨ Admissions Open for Academic Year 2024-25
+            <span className="inline-block px-4 py-2 bg-blue-100 border border-blue-200 rounded-full text-blue-700 text-sm font-medium mb-6">
+              Admissions Open for 2024-25
             </span>
             
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 mb-6 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-bold font-heading text-slate-800 mb-6 leading-tight">
               Al Qalam{' '}
-              <span className="text-gradient-gold">International</span>
+              <span className="text-gradient-blue">International</span>
               <br />
               <span className="text-gradient-blue">Cambridge School</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
               Nurturing Excellence, Building Character, Shaping Futures. 
               Join a community dedicated to academic excellence and holistic development.
             </p>
@@ -117,15 +120,15 @@ const Home = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-7 h-12 border-2 border-primary-400 rounded-full flex justify-center pt-2"
+            className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center pt-2"
           >
-            <motion.div className="w-2 h-3 bg-primary-500 rounded-full" />
+            <motion.div className="w-1.5 h-3 bg-blue-500 rounded-full" />
           </motion.div>
         </motion.div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 bg-gradient-subtle">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
             <StatCard icon={BookOpen} number="15+" label="Years of Excellence" delay={0.1} />
@@ -137,7 +140,7 @@ const Home = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-24 px-4 bg-gradient-light">
+      <section className="py-20 px-4 bg-gradient-bright">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -146,10 +149,10 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-              Why Choose <span className="text-gradient-gold">Al Qalam</span>?
+            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-800 mb-4">
+              Why Choose <span className="text-gradient-blue">Al Qalam</span>?
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               We provide world-class education with a focus on academic excellence and character development
             </p>
           </motion.div>
@@ -162,13 +165,13 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="card-hover p-8 bg-white rounded-2xl shadow-lg border border-slate-100"
+                className="card-bright p-8 rounded-2xl border border-blue-100"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center mb-6 shadow-md">
-                  <feature.icon className="w-8 h-8 text-white" />
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center mb-6">
+                  <feature.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-bold font-heading text-slate-800 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -176,7 +179,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 bg-gradient-to-r from-primary-700 via-primary-800 to-primary-900">
+      <section className="py-20 px-4 bg-gradient-blue">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -187,7 +190,7 @@ const Home = () => {
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Ready to Join Our <span className="text-accent-300">Community</span>?
             </h2>
-            <p className="text-primary-100 text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
               Start your journey towards excellence. Applications are now open for the upcoming academic year.
             </p>
             <Link to="/admissions" className="btn-accent inline-flex items-center space-x-2">
