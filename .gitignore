@@ -1,11 +1,10 @@
 # Dependencies
 node_modules/
-package-lock.json
 
-# Build artifacts
-dist/
-build/
-*.css.map
+# Logs and temp files
+*.log
+*.tmp
+*.swp
 
 # Environment
 .env
@@ -16,49 +15,11 @@ build/
 .vscode/
 .idea/
 
-# Logs and temp files
-*.log
-
 # Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-
-# Logs
-*.log
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# Temporary files
-*.tmp
-*.swp
-*.swo
-
-# Compiled files
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
-
-# Cache directories
-.mypy_cache/
-.pytest_cache/
-.nyc_output/
-coverage/
-.jest/
-
-# Distribution / packaging
 .Python
 env/
 venv/
@@ -66,191 +27,111 @@ venv/
 pip-log.txt
 pip-delete-this-directory.txt
 .tox/
-.coverage.xml
+.coverage
+.coverage.*
+.cache
 nosetests.xml
 coverage.xml
 *.cover
 *.log
-.git/
+.git/modules/
+.DS_Store
+Thumbs.db
 
-# Testing
-test/
-tests/
+# Build results
+dist/
+build/
+*.egg-info/
+.eggs/
+.installed.cfg
+lib/
+lib64/
+parts/
+sdist/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+.eggs/
 
-# Documentation
-docs/_build/
-
-# Local configuration files
-*.local
-.settings/
-
-# IDE specific
+# IDE
+.vscode/
+.idea/
 *.swp
 *.swo
-*~
-.project
-.classpath
-.c9/
-.cache
-.lock-wscript
-.svn/
-.hg/
-.git/
 
-# Bower dependency directory (if you are using bower)
-bower_components/
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.tmp
 
-# node-waf build directory
-waf_build/
+# Testing
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
 
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Node.js native addon files
-*.node
-
-# Typescript v1 extra output
-*.tsbuildinfo
-
-# Yarn Integrity file
-.yarn-integrity
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-
-# Next.js build output
-.next
-
-# Nuxt.js build output
-.nuxt
-
-# Vue.js build output
-.vuepress/dist
-
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
-
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
-
-# yarn v2
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
-
-# Compiled CSS
-*.css.map
-
-# Tailwind CSS
-.tailwind/
-
-# React build artifacts
+# Distribution / packaging
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Temporary files created by create-react-app
-craco.config.js
-babel.config.js
-
-# ESLint cache
-.eslintcache
-
-# Jest coverage
+# Coverage reports
 coverage/
-
-# Prettier cache
-.pre-commit-config.yaml
-
-# Rollup bundle output
-.rollup.cache/
+htmlcov/
+cover/
 
 # Webpack
-webpack.config.js
-webpack.config.*.js
-webpack.*.js
+.bundle.js
+.bundle.js.map
+*.bundle.js
+*.bundle.js.map
 
-# Browser-sync
-.browser-sync-client/
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Parcel
-.cache/
-.dist/
+# Bower
+bower_components/
 
-# Vite
-.vite/
+# Grunt
+.grunt
 
-# Astro
-.dist/
-.astroturf/
+# Gulp
+gulp-build/
 
-# SvelteKit
-.svelte-kit/
+# Jspm
+jspm_packages/
 
-# RedwoodJS
-.redwood/
+# SASS
+.sass-cache/
 
-# Gatsby
-.cache/
-public/
-
-# Remix
-.remix/
-
-# Turborepo
-.node/
-
-# Nx
-.nx/
-
-# Storybook
-.storybook-static/
-
-# Vercel
-.vercel/
-
-# Netlify
-.netlify/
-
-# Cloudflare Pages
-.cloudflare/
-
-# Railway
-.railway/
-
-# Docker
-.docker/
-
-# Kubernetes
-.kube/
-
-# Terraform
-.terraform/
-
-# Ansible
-.retry
-
-# Helm
-charts/
-
-# Database
-*.db
-*.db-journal
-
-# Backup files
-*.bak
-*.backup
-*.orig
-*.rej
+# Yarn
+yarn-error.log
+.yarn-integrity
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Compressed files
 *.zip
@@ -276,580 +157,245 @@ charts/
 *.tar.xz
 *.tar.zst
 
-# Image files (if accidentally added)
-*.png
-*.jpg
-*.jpeg
-*.bmp
-*.gif
-*.webm
-*.svg
-*.ico
-
-# Video files
-*.mp4
-*.avi
-*.mov
-*.wmv
-*.flv
-*.webm
-
-# Audio files
-*.mp3
-*.wav
-*.ogg
-*.flac
-*.aac
-
-# Font files
-*.ttf
-*.woff
-*.woff2
-*.eot
-
-# Document files
-*.pdf
-*.doc
-*.docx
-*.xls
-*.xlsx
-*.ppt
-*.pptx
-
-# Archive files
+# Java
+*.class
 *.jar
 *.war
 *.ear
+*.nar
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.gradle/
+build/
 
-# Configuration files
-config/
-configs/
+# C/C++
+*.o
+*.a
+*.so
+*.obj
+*.out
 
-# Lock files
-package-lock.json
-yarn.lock
+# Go
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.prof
+
+# Rust
+*.dll
+*.dylib
+*.so
+target/
+
+# Ruby
+*.gem
+*.rbc
+.rake.swp
+capybara-*.html
+.rid
+_log/
+*.sock
+*~/
+._*
 Gemfile.lock
-Pipfile.lock
+public/system/
+public/uploads/
+.env
+.storage/
+*.db
+*.db-journal
+public/assets
+vendor/bundle/
+.bundle/
+.rbenv-vars
+.sass-cache/
+guard-livereload/
+.DS_Store
+tmp/
+.dump
+.config.ru
+coverage/
+spec/reports/
+_saved_session
+rdoc/
+pkg/
+doc/
+*.orig
+rerun.txt
+pickle-email-*.eml
+
+# PHP
+*.phar
+.php_cs.cache
+.php_history
+.buildpath
+.project
+.settings/
+*.swp
+*.swo
+nbproject/
+nb-configuration.xml
+.htaccess
+.env
+.php_cs
+.php_cs.dist
+.php_cs.php_cs
+.php_cs.dist.php_cs
+.php_cs.cache
+.php_history
+.composer/composer.lock
+vendor/
+composer.phar
 composer.lock
-Cargo.lock
-go.sum
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Directory for instrumented libs generated by jscoverage/JSCover
-lib-cov
-
-# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# node-waf build directory
-.wafpickle-N
-
-# Mocha testing
-mocha.opts
-
-# PhantomJS
-phantomjs/
-
-# PhantomJS pre-built binary
-phantomjs-prebuilt/
-
-# Sauce-specific
-.sauce-labs/
-
-# AppVeyor
-.appveyor.yml
-
-# Travis CI
-.travis.yml
-
-# CircleCI
-.circleci/
-
-# GitHub Actions
-.github/
-
-# Jenkins
-.jenkins/
-
-# GitLab CI
-.gitlab-ci.yml
-
-# Bitbucket Pipelines
-bitbucket-pipelines.yml
-
-# Semaphore CI
-.semaphore/
-
-# Drone CI
-.drone.yml
-
-# Codecov
-.codecov.yml
-
-# Coveralls
-.coveralls.yml
-
-# SonarQube
-.sonar/
-
-# CodeClimate
-.codeclimate.yml
-
-# Hound CI
-.hound.yml
-
-# Reviewdog
-.reviewdog.yml
-
-# Danger
-Dangerfile
-
-# Local development environment
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Environment specific
-.env.*
-!.env.example
-!.env.sample
-!.env.template
-
-# Secrets
-secrets/
-.secret*
-
-# API keys
-*.key
-*.pem
-*.crt
-*.cert
-*.pub
-
-# SSH
-.ssh/
-
-# AWS
-.aws/
-
-# Azure
-.azure/
-
-# Google Cloud
-.gcloud/
-
-# Heroku
-.heroku/
-
-# Firebase
-.firebase/
-
-# Netlify
-.netlify/
-
-# Vercel
-.vercel/
-
-# Railway
-.railway/
-
-# Docker
-.dockerignore
-
-# Kubernetes
-.kubeconfig
-
-# Helm
-.helm/
-
-# Terraform
-.tfstate
-.tfstate.backup
-*.tfvars
-*.tfvars.json
-.terraform.providers
-.terraform.versions.tf
-.terraform.lock.hcl
-
-# Ansible
-ansible.cfg
-inventory/
-
-# Puppet
-manifests/
-modules/
-
-# Chef
-cookbooks/
-roles/
-
-# SaltStack
-salt/
-pillar/
-
-# Consul
-consul/
-
-# Vault
-vault/
-
-# Nomad
-nomad/
-
-# Packer
-packer/
-
-# Vagrant
-.vagrant/
-vagrant-*.out
-vagrant-*.err
-
-# VirtualBox
-*.vdi
-*.vbox
-*.vbox-prev
-
-# VMware
-*.vmdk
-*.vmx
-*.nvram
-*.vmxf
-*.vmsd
-*.vmsn
-*.vmss
-*.vmtm
-*.vmem
-
-# Parallels
-*.pvm
-*.hdd
-*.hds
-*.pmem
-*.snapshot
-
-# QEMU
-*.qcow2
-*.img
-*.iso
-
-# Docker Machine
-.machine/
-
-# Minikube
-.minikube/
-
-# Kind
-.kind/
-
-# K3s
-.k3s/
-
-# MicroK8s
-.microk8s/
-
-# OpenShift
-.openshift/
-
-# Rancher
-.rancher/
-
-# DigitalOcean
-.doctl/
-
-# Linode
-.linode/
-
-# AWS CLI
-.aws/
-
-# Azure CLI
-.azure/
-
-# Google Cloud CLI
-.gcloud/
-
-# Heroku CLI
-.heroku/
-
-# Firebase CLI
-.firebase/
-
-# Netlify CLI
-.netlify/
-
-# Vercel CLI
-.vercel/
-
-# Railway CLI
-.railway/
-
-# Supabase CLI
-.supabase/
-
-# PlanetScale CLI
-.planetscale/
-
-# Upstash CLI
-.upstash/
-
-# Neon CLI
-.neon/
-
-# Turso CLI
-.turso/
-
-# Drizzle CLI
-.drizzle/
-
-# Prisma CLI
-.prisma/
-
-# tRPC CLI
-.trpc/
-
-# Blitz CLI
-.blitz/
-
-# Redwood CLI
-.redwood/
-
-# Architect CLI
-.arc/
-
-# SST CLI
-.sst/
-
-# CDK CLI
-.cdk.out/
-cdk.out/
-cdk.context.json
-.cdk.staging/
-
-# Pulumi CLI
-.pulumi/
-
-# Terraform CLI
-.terraform/
-terraform.tfstate
-terraform.tfstate.backup
-
-# Ansible CLI
-.ansible/
-
-# Puppet CLI
-.puppet/
-
-# Chef CLI
-.chef/
-
-# SaltStack CLI
-.salt/
-
-# Consul CLI
-.consul/
-
-# Vault CLI
-.vault/
-
-# Nomad CLI
-.nomad/
-
-# Packer CLI
-.packer/
-
-# Vagrant CLI
-.vagrant/
-
-# Docker CLI
-.docker/
-
-# Kubernetes CLI
-.kube/
-
-# Helm CLI
-.helm/
-
-# Minikube CLI
-.minikube/
-
-# Kind CLI
-.kind/
-
-# K3s CLI
-.k3s/
-
-# MicroK8s CLI
-.microk8s/
-
-# OpenShift CLI
-.openshift/
-
-# Rancher CLI
-.rancher/
-
-# DigitalOcean CLI
-.doctl/
-
-# Linode CLI
-.linode/
-
-# Supabase CLI
-.supabase/
-
-# PlanetScale CLI
-.planetscale/
-
-# Upstash CLI
-.upstash/
-
-# Neon CLI
-.neon/
-
-# Turso CLI
-.turso/
-
-# Drizzle CLI
-.drizzle/
-
-# Prisma CLI
-.prisma/
-
-# tRPC CLI
-.trpc/
-
-# Blitz CLI
-.blitz/
-
-# Redwood CLI
-.redwood/
-
-# Architect CLI
-.arc/
-
-# SST CLI
-.sst/
-
-# CDK CLI
-.cdk.out/
-cdk.out/
-cdk.context.json
-.cdk.staging/
-
-# Pulumi CLI
-.pulumi/
-
-# Terraform CLI
-.terraform/
-terraform.tfstate
-terraform.tfstate.backup
-
-# Ansible CLI
-.ansible/
-
-# Puppet CLI
-.puppet/
-
-# Chef CLI
-.chef/
-
-# SaltStack CLI
-.salt/
-
-# Consul CLI
-.consul/
-
-# Vault CLI
-.vault/
-
-# Nomad CLI
-.nomad/
-
-# Packer CLI
-.packer/
-
-# Vagrant CLI
-.vagrant/
-
-# Docker CLI
-.docker/
-
-# Kubernetes CLI
-.kube/
-
-# Helm CLI
-.helm/
-
-# Minikube CLI
-.minikube/
-
-# Kind CLI
-.kind/
-
-# K3s CLI
-.k3s/
-
-# MicroK8s CLI
-.microk8s/
-
-# OpenShift CLI
-.openshift/
-
-# Rancher CLI
-.rancher/
-
-# DigitalOcean CLI
-.doctl/
-
-# Linode CLI
-.linode/
-
-# Supabase CLI
-.supabase/
-
-# PlanetScale CLI
-.planetscale/
-
-# Upstash CLI
-.upstash/
-
-# Neon CLI
-.neon/
-
-# Turso CLI
-.turso/
-
-# Drizzle CLI
-.drizzle/
-
-# Prisma CLI
-.prisma/
-
-# tRPC CLI
-.trpc/
-
-# Blitz CLI
-.blitz/
-
-# Redwood CLI
-.redwood/
-
-# Architect CLI
-.arc/
-
-# SST CLI
-.sst/
-
-# CDK CLI
-.cdk.out/
-cdk.out/
-cdk.context.json
-.cdk.staging/
-
-# Pulumi CLI
-.pulumi/
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar
+composer.json
+composer.lock
+composer.phar......
